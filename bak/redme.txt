@@ -1,0 +1,29 @@
+
+1.注意wfs.js中要修改:
+  {
+    key: 'onMediaAttached',
+    value: function onMediaAttached(data) {
+      if (data.websocketName != undefined) {
+        //var client = new WebSocket( 'ws://' + window.location.host + '/' +  data.websocketName );
+        //var uri = 'ws://' + '10.122.4.17:18080';
+        //var protocol = 'binary';
+        //var client = new WebSocket(uri, protocol);
+		var client = new WebSocket('ws://10.122.4.17:18080/wstest');
+        this.wfs.attachWebsocket(client, data.channelName);
+      } else {
+        console.log('websocketName ERROE!!!');
+      }
+    }
+  }
+  {
+    key: 'receiveSocketMessage',
+    value: function receiveSocketMessage(event) {
+		var buffer = new Uint8Array(event.data);
+		this.wfs.trigger(_events2.default.H264_DATA_PARSING, { data:buffer });
+	}
+  }
+
+
+2.websocket可以地址：
+  ws://127.0.0.1:1903/webSocket/{ip}/{port}/{u}/{p}/{uuid}  -->1.判断是否已登陆，2.已登陆则开发推ws接口
+

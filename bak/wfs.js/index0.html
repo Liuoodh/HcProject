@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>h.264 To fmp4</title>
+        <script src="js/jquery-3.0.0.min"></script>
+		<script src="js/wfs.js"></script>
+		<style type="text/css" media="screen">
+			video.rotate180 {
+				width: 100%;
+				height: 100%;
+				transform: rotateX(180deg);
+				-moz-transform: rotateX(180deg);
+				-webkit-transform: rotateX(180deg);
+				-o-transform: rotateX(180deg);
+				-ms-transform: rotateX(180deg);
+			}
+		</style>
+	</head>
+	<body>
+		<h2>��������ͷ��Ƶ��ʾ(��Ƶ����H.264)</h2>
+		<div class="wfsjs">
+			<video id="video1" muted="muted" controls="controls" style="width: 100%;height: 100%;" autoplay="autoplay" muted></video>
+			<div class="ratio"></div>
+		</div>
+	<script>
+	  /* 
+	   *wfs.js �����onMediaAttached  
+	   */
+	  var  ip = "192.168.1.64";
+	  var  port = "8000";
+	  var  u = "admin";
+	  var  p = "12345qwer";
+	  var  c = "1"
+	  window.onload = function() {
+		if (Wfs.isSupported()) {
+			var video1 = document.getElementById("video1");
+			var wfs = new Wfs();
+			wfs.attachMedia(video1, 'ch1');
+		}
+	  };
+	</script>
+	</body>
+</html>
